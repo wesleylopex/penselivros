@@ -25,3 +25,9 @@ Route.get("/users/:id", "UsersController.show");
 Route.post("/users", "UsersController.create");
 Route.put("/users/:id", "UsersController.update");
 Route.delete("/users/:id", "UsersController.delete");
+
+Route.get("/categories", "CategoriesController.index");
+Route.get("/categories/:id", "UsersController.show");
+// Route.post("/categories", "UsersController.create");
+// Route.put("/categories/:id", "UsersController.update");
+// Route.delete("/categories/:id", "UsersController.delete");
