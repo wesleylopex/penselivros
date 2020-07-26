@@ -1,0 +1,7 @@
+api/node_modules
+api/build
+api/coverage
+api/.vscode
+api/.DS_STORE
+api/.env
+api/tmp
