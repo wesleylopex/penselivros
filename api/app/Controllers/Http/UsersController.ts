@@ -1,5 +1,6 @@
 import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 import User from "App/Models/User";
+import Loan from "App/Models/Loan";
 
 export default class UsersController {
   public async index() {
@@ -7,8 +8,12 @@ export default class UsersController {
   }
 
   public async show({ params }: HttpContextContract) {
-    const user = await User.find(params.id);
-    return user;
+    const { id: userId } = params;
+
+    const user = await User.findOrFail(userId);
+    const userLoans = await Loan.findBy("user_id", userId);
+
+    return { ...user.serialize(), loans: userLoans?.serialize() };
   }
 
   public async create({ request }: HttpContextContract) {

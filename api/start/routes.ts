@@ -20,14 +20,22 @@
 
 import Route from "@ioc:Adonis/Core/Route";
 
+// books
 Route.get("/users", "UsersController.index");
 Route.get("/users/:id", "UsersController.show");
 Route.post("/users", "UsersController.create");
 Route.put("/users/:id", "UsersController.update");
 Route.delete("/users/:id", "UsersController.delete");
 
+// categories
 Route.get("/categories", "CategoriesController.index");
-Route.get("/categories/:id", "UsersController.show");
-// Route.post("/categories", "UsersController.create");
-// Route.put("/categories/:id", "UsersController.update");
-// Route.delete("/categories/:id", "UsersController.delete");
+Route.post("/categories", "CategoriesController.create");
+Route.put("/categories/:categoryId", "CategoriesController.update");
+Route.delete("/categories/:categoryId", "CategoriesController.delete");
+
+// books
+Route.get("/books", "BooksController.index");
+Route.get("/books/:bookId", "BooksController.show");
+Route.post("/books", "BooksController.create");
+Route.put("/books/:bookId", "BooksController.update");
+Route.delete("/books/:bookId", "BooksController.delete");
