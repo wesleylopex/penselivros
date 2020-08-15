@@ -8,7 +8,7 @@ export default class UsersController {
   }
 
   public async show({ params }: HttpContextContract) {
-    const { id: userId } = params;
+    const { userId } = params;
 
     const user = await User.findOrFail(userId);
     const userLoans = await Loan.findBy("user_id", userId);
@@ -23,8 +23,9 @@ export default class UsersController {
   }
 
   public async update({ params, request }: HttpContextContract) {
+    const { userId } = params;
     const data = request.only(["isAdmin", "name", "username", "password"]);
-    const user = await User.findOrFail(params.id);
+    const user = await User.findOrFail(userId);
 
     user.isAdmin = data.isAdmin;
     user.name = data.name;
@@ -33,12 +34,12 @@ export default class UsersController {
 
     await user.save();
 
-    const savedUser = await User.find(user.id);
+    const savedUser = await User.find(userId);
     return savedUser;
   }
 
   public async delete({ params }: HttpContextContract) {
-    const user = await User.findOrFail(params.id);
+    const user = await User.findOrFail(params.userId);
     await user.delete();
 
     return user.$isDeleted;

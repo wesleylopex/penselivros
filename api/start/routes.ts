@@ -22,10 +22,10 @@ import Route from "@ioc:Adonis/Core/Route";
 
 // books
 Route.get("/users", "UsersController.index");
-Route.get("/users/:id", "UsersController.show");
+Route.get("/users/:userId", "UsersController.show");
 Route.post("/users", "UsersController.create");
-Route.put("/users/:id", "UsersController.update");
-Route.delete("/users/:id", "UsersController.delete");
+Route.put("/users/:userId", "UsersController.update");
+Route.delete("/users/:userId", "UsersController.delete");
 
 // categories
 Route.get("/categories", "CategoriesController.index");
